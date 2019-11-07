@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  },
+  "scripts": {
+    "serve": "live-server src"
+  },
+  "dependencies": {
+    "giphy-random": "^2.0.8"
+  }
+}

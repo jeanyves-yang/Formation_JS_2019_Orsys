@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Todos</title>
+    <link rel="stylesheet" type="text/css" href="todos.css" />
+  </head>
+  <body>
+    <form class="new-todo">
+      <input type="checkbox" name="toggle" id="toggle" />
+      <input
+        type="text"
+        name="todo"
+        placeholder="Add your todo"
+        id="todo"
+        autofocus
+      />
+      <button class="addremovebutton">+</button>
+    </form>
+    <div class="list"></div>
+    <div class="filter">
+      <button type="text" id="all">All</button>
+      <button type="text" id="active">Active</button>
+      <button type="text" id="completed">Completed</button>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/giphy-random/dist/giphy-random.umd.min.js"></script>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

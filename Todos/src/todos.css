@@ -1,0 +1,23 @@
+body {
+  color: #ddd;
+  background-size: cover;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style the "Add" button */
+#addremovebutton {
+  background: #d9d9d9;
+  color: #555;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.row {
+  transition: all 2s ease;
+}
+
+.row:hover {
+  transform: rotateZ(360deg);
+}
