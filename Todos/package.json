@@ -1,9 +1,19 @@
 {
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "live-server": "^1.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   },
   "scripts": {
-    "serve": "live-server src"
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production",
+    "serve:dev": "webpack-dev-server --development",
+    "serve:prod": "live-server dist"
   },
   "dependencies": {
     "giphy-random": "^2.0.8"

@@ -1,12 +1,16 @@
 import { addTodo } from './todos.js';
+import { fetchTodos, postTodo } from './api.js';
 
-(async () => {
-  const API_KEY = "0UTRbFtkMxAplrohufYco5IY74U8hOes";
+// async function getRandomGif() {
+//   const API_KEY = "0UTRbFtkMxAplrohufYco5IY74U8hOes";
 
-  const { data } = await giphyRandom(API_KEY);
-  document.body.style.backgroundImage = `url(${data.image_url})`;
-  // console.log(data.image_url);
-})();
+//   const { data } = await giphyRandom(API_KEY);
+//   document.body.style.backgroundImage = `url(${data.image_url})`;
+//   // console.log(data.image_url);
+// };
+// getRandomGif();
+
+// setInterval(getRandomGif, 5000);
 
 /** @type {HTMLFormElement} */
 const formElt = document.querySelector('.new-todo');
@@ -22,24 +26,34 @@ const allButtonElt = document.querySelector('#all');
 const activeButtonElt = document.querySelector('#active');
 /** @type {HTMLButtonElement} */
 const completedButtonElt = document.querySelector('#completed');
-
-formElt.addEventListener('submit', (event) => {
+formElt.addEventListener('submit', async (event) => {
   event.preventDefault();
+    const res = await postTodo(inputElt.value, false);
+    addTodo(
+      {
+        id: res.id,
+        title: inputElt.value,
+        completed: false,
+      },
+      divElt,
+    );
+    inputElt.value = '';
+    event.target.focus = true;
+  });
 
-  addTodo(
-    {
-      id: Math.random(),
-      title: inputElt.value,
-      completed: false,
-    },
-    divElt,
-  );
-  inputElt.value = '';
-  event.target.focus = true;
-});
+
+(async() => {
+  const todos = await fetchTodos();
+  console.log(todos);
+  for (const todo of todos) {
+    addTodo(todo, divElt);
+  }
+})();
 
 checkBoxElt.addEventListener('click', (event) => {
   const rowList = document.querySelectorAll('.row');
+  event.target.parentNode.classList.add('fade-out');
+
   for (const row of rowList) {
     row.querySelector('.completed').checked = event.target.checked;
   }
@@ -74,3 +88,4 @@ completedButtonElt.addEventListener('click', (event) => {
     }
   }
 });
+

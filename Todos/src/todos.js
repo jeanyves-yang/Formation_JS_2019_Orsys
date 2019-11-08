@@ -1,3 +1,5 @@
+import { deleteTodo } from "./api.js";
+
 /**
  * @param {object} todo
  * @param {number} todo.id
@@ -10,13 +12,13 @@ export function addTodo(todo, containerElt) {
   const rowElt = document.createElement('div');
   rowElt.style.display = 'block';
   rowElt.classList.add('row'); // rowElt.className = 'row';
+  rowElt.id = todo.id;
 
   // Create a checkbox, add it to the row
   const checkBoxElt = document.createElement('input');
   checkBoxElt.type = 'checkbox';
   checkBoxElt.classList.add('completed');
   checkBoxElt.checked = todo.completed;
-  checkBoxElt.id = todo.id;
   rowElt.appendChild(checkBoxElt);
 
   // Create an input text field, add it to the row
@@ -33,9 +35,11 @@ export function addTodo(todo, containerElt) {
   buttonElt.classList.add('addremovebutton');
   buttonElt.addEventListener('click', (event) => {
     event.preventDefault();
-    console.log(event.target.parentNode);
-    event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-    // event.target.removeChild();
+    (async () => {
+      console.log(event.target.parentNode.id);
+      await deleteTodo(event.target.parentNode.id);
+      event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+    })();
   });
   rowElt.appendChild(buttonElt);
 

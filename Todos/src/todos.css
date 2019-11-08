@@ -15,9 +15,14 @@ body {
 }
 
 .row {
-  transition: all 2s ease;
+  transition: all 1s ease;
+  opacity: 1;
 }
 
 .row:hover {
-  transform: rotateZ(360deg);
+  /* transform: rotateZ(360deg); */
+}
+
+.row.fade-out {
+  opacity: 0;
 }
