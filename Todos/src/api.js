@@ -1,5 +1,5 @@
 export async function fetchTodos() {
-  const url = 'https://jsonplaceholder.typicode.com/todos';
+  const url = 'http://localhost:3000/todos';
   const res = await fetch(url);
   const todos = await res.json();
 
@@ -7,7 +7,7 @@ export async function fetchTodos() {
 }
 
 export async function postTodo(title, completed) {
-  const url = 'https://jsonplaceholder.typicode.com/todos';
+  const url = 'http://localhost:3000/todos';
   const res = await fetch(url, {
     method: 'POST',
     headers: {'Content-type': 'application/json'},
@@ -17,7 +17,7 @@ export async function postTodo(title, completed) {
 }
 
 export async function deleteTodo(id) {
-  const url = `https://jsonplaceholder.typicode.com/todos/${id}`;
+  const url = `https://localhost:3000/todos/${id}`;
   const res = await fetch(url, {
     method: 'DELETE',
   });
